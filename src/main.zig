@@ -1669,14 +1669,14 @@ fn positionWidgets(ptr: *anyopaque) !void {
         state.brightness_down_label.positionX(state.hibernate_label
             .childrenPosition()
             .addX(1));
-        state.brightness_up_label.positionX(state.brightness_down_label
+        state.brightness_up_label.positionXY(state.brightness_down_label
             .childrenPosition()
             .addX(1));
     }
 
     state.battery_label.positionXY(state.edge_margin
         .add(TerminalBuffer.START_POSITION)
-        .addYFromIf(state.shutdown_label.childrenPosition(), !state.config.hide_key_hints)
+        .addYFromIf(state.brightness_up_label.childrenPosition(), !state.config.hide_key_hints)
         .removeYFromIf(state.edge_margin, !state.config.hide_key_hints));
     state.clock_label.positionXY(state.edge_margin
         .add(TerminalBuffer.START_POSITION)
